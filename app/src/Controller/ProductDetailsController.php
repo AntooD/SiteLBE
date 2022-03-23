@@ -20,4 +20,22 @@ class ProductDetailsController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/details/add/{id}", name="cart_add_this_product")
+     */
+    public function add(int $id, SessionInterface $session)
+    {
+        $basket = $session->get('basket', []);
+
+        if(!empty($basket[$id])){
+            $basket[$id]++;
+        }else{
+            $basket[$id] = 1;
+        }
+        
+        $session->set('basket', $basket);
+
+        return $this->redirectToRoute("cart_index");
+    }
 }
