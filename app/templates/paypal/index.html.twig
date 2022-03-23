@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+{% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices -->
+{% endblock %}
+{% block body %}
+<input type="number" id="amount" value=total>
+<div id="paypal"></div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://www.paypal.com/sdk/js?client-id=ARcYBy6SSyJeyXMTj9uOuMP9d8c9agrgt6gEtqqsBS0d14-1zL_f4lmuqrm4JYAU32R568wN91oQuGTF&currency=EUR"></script>
+          {{ encore_entry_script_tags('paypal') }}
+{% endblock %}

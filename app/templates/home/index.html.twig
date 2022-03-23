@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceuil{% endblock %}
+
+{% block body %}
+<main>
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img loading="lazy" src="{{ asset('image/im0.png') }}" />
+
+        <div class="container">
+          <div class="carousel-caption text-start">
+          <div id="slogan">
+            <h1>Artisants créateurs de pièces uniques</h1>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="d-flex justify-content-around">
+      <div class="col-md-4 me-6">
+        <div class="h-100 p-5 text-center text-grey bg-dark border border-secondary border-3 rounded-3">
+          <h2>Un projet ?</h2>
+          <p>Cela nous intéresse ! Venez nous en parler</p>
+          <button class="btn btn-outline-secondary" type="button">Envoyer un message</button>
+        </div>
+      </div>
+      <div class="col-md-4 me-6">
+        <div class="h-100 p-5 text-center text-grey bg-dark border border-secondary border-3 rounded-3">
+          <h2>Des questions ?</h2>
+          <p>Nous nous ferrons un plaisir de vous répondre</p>
+          <button class="btn btn-secondary" type="button">Poser une question</button>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+            {{ encore_entry_script_tags('home') }}
+{% endblock %}

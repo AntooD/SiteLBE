@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Le Bois émoi - {% block title %}{% endblock %}</title>
+        <link rel="icon" href="image/logo1.png">
+       
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-white fixed-top bg-white" aria-label="Tenth navbar example">
+                <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn btn-success me-5 mt-3" aria-current="page" href="{{path('AppHomePage')}}">Acceuil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-success me-5 mt-3" aria-current="page" href="{{path('AppHomePage')}}">Qui sommes nous ?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-success me-6 mt-3" aria-current="page" href="{{ path('product_index')}}">Voir les produits</a>
+                    </li>
+                    <a class="btn btn-primary me-6 mb-1" href="{{ path('AppHomePage') }}"><img loading="lazy" width="200" weight="80" src="{{ asset('image/logo2.png') }}" /></a>
+                    <li class="nav-item">
+                        <a class="btn btn-success me-6 mt-3" href="{{ path('cart_index') }}">Panier</a>
+                    </li>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li>
+                            <a class="btn btn-success me-4 mt-3" href="#"> Compte : {{app.user.firstName}}</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-danger me-3 mt-3" href="{{ path('app_logout')}}">Déconnexion</a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a class="btn btn-success me-5 mt-3" href="{{ path('app_login')}}">Connexion</a></a>
+                        </li>
+                        <li>
+                            <a class="btn btn-success me-5 mt-3" href="{{ path('app_register')}}" >Inscription</a>
+                        </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        {% block body %} {% endblock body %}
+    {# </body>
+     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+      </a>
+      <span class="text-muted">&copy; 2022 Le Bois émoi</span>
+    </div>
+
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+      </ul>
+    </div>
+  </footer> #}
+</html>

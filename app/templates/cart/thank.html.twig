@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre panier
+{% endblock %}
+
+{% block body %}
+</br>
+</br>
+</br>
+    <div class="bg-light p-3">
+        <h1>Merci pour votre achat</h1>
+    </div>
+    <tr>
+
+                    <td>
+                        <a href="{{ path('cart_delete_all')}}" class="btn btn-danger btn-sm">
+                                Retourner à l'accueil
+                               <a href= {{path('AppHomePage')}}></a>
+                        </a>
+                    </td>
+                </tr>
+
+    
+       
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre panier
+{% endblock %}
+
+{% block body %}
+</br>
+</br>
+</br>
+    <div class="bg-light p-3">
+        <h1>Votre panier</h1>
+    </div>
+
+    {% if items | length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{item.product.title}}</td>
+                        <td>{{item.product.price}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.product.price * item.quantity}}</td>
+                        
+                        <td>
+                            <a href="{{ path('cart_add_this_product', {'id':item.product.id}) }}" class="btn btn-success btn-sm">
+                                X
+                            </a>
+                            <a href="{{ path('cart_remove', {'id':item.product.id}) }}" class="btn btn-danger btn-sm">
+                                X
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="right">Total :</td>
+                    <td>{{ total }}</td>
+                    <td>
+                        <a href="{{ path('cart_delete_all')}}" class="btn btn-danger btn-sm">
+                                Supprimer tous les articles du panier
+                        </a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <input  type="hidden" type="number" id="amount" value="{{total}}">
+        <div id="paypal"></div> 
+    {% else %}
+        <p>Votre panier est vide ! Il est grand temps de le remplir :)</p>
+    {% endif %} 
+       
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://www.paypal.com/sdk/js?client-id=ARcYBy6SSyJeyXMTj9uOuMP9d8c9agrgt6gEtqqsBS0d14-1zL_f4lmuqrm4JYAU32R568wN91oQuGTF&currency=EUR"></script>
+          {{ encore_entry_script_tags('paypal') }}
+{% endblock %}
